@@ -1,5 +1,36 @@
+module deimos.surfi.surfi;
+
+private import deimos.surfi.pixbuf : Pixbuf;
 
 extern(C) {
+    struct GtkWidget {}
+    struct WebKitWebBackForwardList {}
+    struct GtkTargetList {}
+    struct WebKitDOMDocument {}
+    struct GdkEventButton {}
+    struct WebKitWebInspector {}
+    alias int WebKitLoadStatus;
+    struct WebKitWebSettings {}
+    alias int WebKitWebViewViewMode;
+    struct WebKitViewportAttributes {}
+    struct WebKitWebHistoryItem {}
+    struct GtkMovementStep {}
+    struct GtkMenu {}
+    struct WebKitWebWindowFeatures {}
+
+    struct WebKitDOMHTMLElement {}
+    struct WebKitGeolocationPolicyDecision {}
+    struct WebKitHitTestResult {}
+    //     struct WebKitNavigationResponse {}
+    alias int WebKitNavigationResponse;
+    struct WebKitNetworkRequest {}
+    struct WebKitWebFrame {}
+    struct WebKitWebNavigationAction {}
+    struct WebKitWebPolicyDecision {}
+    struct WebKitWebResource {}
+    struct GHashTable {}
+    struct GObject {}
+
     struct SurfiClient {
         GtkWidget* window; // Offscreen window
         GtkWidget* view; // The webkit widget
@@ -63,7 +94,7 @@ extern(C) {
     void surfi_client_load_string(SurfiClient* client, const(char)* content, const(char)* mime_type,
                                 const(char)* encoding, const(char)* base_uri);
     void surfi_client_load_uri(SurfiClient* client, const(char)* uri);
-    unsigned int surfi_client_mark_text_matches(SurfiClient* client, const(char)* string, bool case_sensitive, unsigned int limit);
+    uint surfi_client_mark_text_matches(SurfiClient* client, const(char)* string, bool case_sensitive, uint limit);
     void surfi_client_move_cursor(SurfiClient* client, GtkMovementStep step, int count);
     void surfi_client_paste_clipboard(SurfiClient* client);
     void surfi_client_redo(SurfiClient* client);

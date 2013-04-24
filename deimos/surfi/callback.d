@@ -1,19 +1,8 @@
-import deimos.surfi.surfi;
+module deimos.surfi.callback;
+
+private import deimos.surfi.surfi;
 
 extern(C) {
-    struct WebKitDOMHTMLElement {}
-    struct WebKitGeolocationPolicyDecision {}
-    struct WebKitHitTestResult {}
-//     struct WebKitNavigationResponse {}
-    alias int WebKitNavigationResponse;
-    struct WebKitNetworkRequest {}
-    struct WebKitWebFrame {}
-    struct WebKitWebNavigationAction {}
-    struct WebKitWebPolicyDecision {}
-    struct WebKitWebResource {}
-    struct GHashTable {}
-    struct GObject {}
-
     void surfi_client_set_callback_close_web_view(SurfiClient* client,
         bool function(SurfiClient* client) callback);
     void surfi_client_set_callback_console_message(SurfiClient* client,
@@ -54,7 +43,7 @@ extern(C) {
     void surfi_client_set_callback_leaving_fullscreen(SurfiClient* client,
         bool function(SurfiClient* client, WebKitDOMHTMLElement* element) callback);
     void surfi_client_set_callback_load_commited(SurfiClient* client,
-        void (*callback)(SurfiClient* client, WebKitWebFrame* frame) callback);
+        void function(SurfiClient* client, WebKitWebFrame* frame) callback);
     void surfi_client_set_callback_load_error(SurfiClient* client,
         bool function(SurfiClient* client, WebKitWebFrame* frame) callback);
     void surfi_client_set_callback_load_finished(SurfiClient* client,
@@ -62,7 +51,7 @@ extern(C) {
     void surfi_client_set_callback_load_progress_changed(SurfiClient* client,
         void function(SurfiClient* client, int progress) callback);
     void surfi_client_set_callback_load_started(SurfiClient* client,
-        void (*callback)(SurfiClient* client, WebKitWebFrame* frame) callback);
+        void function(SurfiClient* client, WebKitWebFrame* frame) callback);
     void surfi_client_set_callback_mime_type_policy_decision_requested(SurfiClient* client,
         bool function(SurfiClient* client, WebKitWebFrame* frame, WebKitNetworkRequest* request,
                         char* mimetype, WebKitWebPolicyDecision* policy_decision) callback);

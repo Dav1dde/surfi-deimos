@@ -1,3 +1,5 @@
+module deimos.surfi.pixbuf;
+
 extern(C) {
     struct Pixbuf {}
 
